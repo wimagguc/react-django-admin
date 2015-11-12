@@ -1,10 +1,6 @@
 # React-Django Admin
 
-#####
-
-TODO: this is the backend service only :) adding the initial frontend app is in the making.
-
-#####
+## TODO: this is the backend service only :) adding the initial frontend app is in the making.
 
 Administration interface in React JS. Using Django's Rest Framework for the backend, and bootstrap for the templates.
 
@@ -41,15 +37,12 @@ $ python manage.py runserver
 
 This is a proof-of-concept, not used anywhere in special.
 
-However, feel free to website here and send a pull request.
+However, feel free to add your link here and send a pull request.
 
 
 ## License
 
-[MIT, do-with-the-code-whatever-you-please License](https://github.com/wimagguc/react-django-admin/blob/master/LICENSE.md)
-
-This code uses the jQuery Javascript library. To read more about it, go to [jquery.com](http://jquery.com/).
-
+[MIT, do-with-the-code-whatever-you-please License](https://github.com/wimagguc/react-django-admin/blob/master/LICENSE)
 
 ## About
 
