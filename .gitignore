@@ -1,3 +1,17 @@
+## Backend
+
+*.log
+*.pot
+*.pyc
+venv/*
+.Python
+.pydevproject
+.project
+test.db
+settings_local.py
+
+## Frontend
+
 # Logs
 logs
 *.log
@@ -25,3 +39,5 @@ build/Release
 # Dependency directory
 # https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git
 node_modules
+backend/venv
+db.sqlite3
