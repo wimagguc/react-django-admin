@@ -56,6 +56,7 @@ var ModalTrigger = React.createClass({
 				{this.props.trigger}
 				<Modal ref="payload"
 					content={this.props.content}
+					htmlID={this.props.htmlID}
 				/>
 			</div>
 		);
@@ -78,7 +79,7 @@ var Modal = React.createClass({
 	},
 	render: function() {
 		return (
-			<div onClick={this.handleClick} className="modal fade" role="dialog" aria-hidden="true">
+			<div onClick={this.handleClick} className="modal fade" role="dialog" aria-hidden="true" id={this.props.htmlID}>
 				<div className="modal-dialog">
 					<div className="modal-content">
 						{this.props.content}

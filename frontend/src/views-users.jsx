@@ -152,6 +152,7 @@ var AddUserModal = React.createClass({
 			url: app.Config.API_URI + '/api/R/users/',
 			success: function(data) {
 				_this.setState({ajaxRunning:0, data:data});
+				$("#addUserModal").modal("hide");
 				app.navigate("/refresh", {trigger: true});
 				app.navigate("/users", {trigger: true});
 			},
@@ -180,6 +181,7 @@ var AddUserModal = React.createClass({
 	render: function() {
 		return (
 			<ModalTrigger
+				htmlID={"addUserModal"}
 				trigger={<a className="btn btn-danger">New user</a>}
 				content={
 					<form className="form-horizontal" onSubmit={this.handleFormSubmit}>
