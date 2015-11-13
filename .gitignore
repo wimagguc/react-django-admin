@@ -41,3 +41,4 @@ build/Release
 node_modules
 backend/venv
 db.sqlite3
+backend/static
