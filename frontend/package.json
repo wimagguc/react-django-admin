@@ -1,0 +1,31 @@
+{
+    "name": "react-django-admin",
+    "version": "1.0.0",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/wimagguc/react-django-admin.git"
+    },
+    "author": "Richard Dancsi <wimagguc@gmail.com> (http://www.wimagguc.com/)",
+    "license": "MIT",
+    "description": "Administration interface in React JS. Using Django's Rest Framework for the backend, and bootstrap for the templates.",
+    "dependencies": {
+        "connect" : "*",
+        "serve-static" : "*"
+    },
+    "devDependencies": {
+        "gulp": "*",
+        "gulp-babel": "*",
+        "gulp-concat": "*",
+        "gulp-sourcemaps": "*",
+        "gulp-concat": "*",
+        "babel-core": "*",
+        "babel-preset-es2015": "*",
+        "babel-preset-react": "*",
+        "gulp-uglify": "*",
+        "gulp-watch": "*"
+    },
+    "keywords": [
+        "react",
+        "admin"
+    ]
+}

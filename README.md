@@ -1,37 +1,96 @@
 # React-Django Admin
 
-## TODO: this is the backend service only :) adding the initial frontend app is in the making.
-
-Administration interface in React JS. Using Django's Rest Framework for the backend, and bootstrap for the templates.
+Administration interface in React JS, and a simple Django Rest Framework (with OAuth2 provider) for the backend. Uses Bootstrap for the templates.
 
 This is not meant to be a replacement of Django's admin. What this project is actually good for:
 
 * You can provide a separate "administration" area for the website's users
-* Gated web login for any OAuth2-based API
+* Web login for any OAuth2-based API
 
+## TODO
+
+    * Better README :)
+    * React views are now using global variables, whoah!
+
+## Frontend
+
+### To install the project:
+
+    ```sh
+    $ npm install
+    ```
+
+### For development, auto-building the resources:
+
+    ```sh
+    $ gulp watch
+    ```
+
+### Edit the config:
+
+    The config is in `./js/config.js`; Copy the `./js/config.js.example` file, then change the API_URI parameter to the server you've set in the backend:
+
+    ```js
+    var RDAAppConfig = {};
+    RDAAppConfig.Config = {
+    	API_URI : "http://localhost:5000",
+    	CLIENT_ID : "<YOUR_CLIENT_ID>",
+    	CLIENT_SECRET : "<YOUR_CLIENT_SECRET>"
+    };
+    ```
+
+### Run server:
+
+    ```sh
+    $ node server.js
+    ```
+
+    Visit http://localhost:8080/ in the browser.
+
+### This project uses:
+
+    * React.js
+    * Bootstrap
+    * Backbone.js
+    * jQuery 2
 
 ## Backend
 
-To install the project:
+### To install the project:
 
-```sh
-$ virtualenv venv
-$ source venv/bin/activate
-$ pip install -r requirements.txt 
-$ python manage.py syncdb
-```
+    ```sh
+    $ virtualenv venv
+    $ source venv/bin/activate
+    $ pip install -r requirements.txt
+    $ python manage.py syncdb
+    $ python manage.py collectstatic
+    ```
 
-Run locally:
+### Run locally:
 
-```sh
-$ foremen start
-```
+    ```sh
+    $ foremen start
+    ```
 
-alternatively:
+    Or, alternatively:
 
-```sh
-$ python manage.py runserver
-```
+    ```sh
+    $ python manage.py runserver
+    ```
+
+### Add the OAuth2 Credentials
+
+    Run the server, then go to the address:
+
+    http://localhost:5000/admin/oauth2_provider/application/add/
+
+    Add:
+
+    * CLIENT_ID, CLIENT_SECRET: the auto-generated keys
+    * Client type: Confidental
+    * Authorization grant type: Resource owner password-based
+    * Name: any
+    * User: any
 
 ## Used at
 
@@ -52,4 +111,3 @@ Richard Dancsi
 - Github: [github.com/wimagguc](http://github.com/wimagguc/)
 - Twitter: [twitter.com/wimagguc](http://twitter.com/wimagguc/)
 - Linkedin: [linkedin.com/in/richarddancsi](http://linkedin.com/in/richarddancsi)
-
