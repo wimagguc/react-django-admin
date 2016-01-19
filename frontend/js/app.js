@@ -1,11 +1,10 @@
-if (typeof RDAAppConfig === 'undefined') {
-	alert('Please provide a config.js!\n(See config.js.example for details.)');
-}
+var RDA = this.RDA || {};
+RDA.Views = RDA.Views || {};
 
 var RDARouter = Backbone.Router.extend({
 	initialize: function() {
 		var User = Backbone.Model.extend({
-			localStorage: new Backbone.LocalStorage(RDAAppConfig.Config.STORAGE_ID),
+			localStorage: new Backbone.LocalStorage(RDA.Config.STORAGE_ID),
 			defaults: function() {
 				return {
 					id: 1,
@@ -20,34 +19,46 @@ var RDARouter = Backbone.Router.extend({
     routes: {
 		"users" : "users",
 		"refresh" : "refresh",
+		"hello" : "hello",
 		"*actions" : "defaultRoute"
 	}
 });
 
-_.defaults(RDARouter.prototype, RDAAppConfig);
+_.defaults(RDARouter.prototype, {
+	Config: RDA.Config,
+	Views: RDA.Views
+});
 
 var app = new RDARouter();
 
 app.on('route:users', function (id) {
 	if (!this.user.attributes.access_token) {
-		this.navigate("/users", {trigger: true});
+		this.navigate("/", {trigger: true});
 	} else {
-		renderUsersView();
+		app.Views.renderUsersView();
 	}
 });
 
 app.on('route:refresh', function(actions) {
 	if (!this.user.attributes.access_token) {
-		this.navigate("/users", {trigger: true});
+		this.navigate("/", {trigger: true});
 	} else {
-		renderEmptyView();
+		app.Views.renderEmptyView();
+	}
+});
+
+app.on('route:hello', function(actions) {
+	if (!this.user.attributes.access_token) {
+		this.navigate("/", {trigger: true});
+	} else {
+		app.Views.renderHelloView();
 	}
 });
 
 app.on('route:defaultRoute', function(actions) {
 	if (this.user.attributes.access_token) {
-		this.navigate("/users", {trigger: true});
+		this.navigate("/", {trigger: true});
 	} else {
-		renderLoginView();
+		app.Views.renderLoginView();
 	}
 });

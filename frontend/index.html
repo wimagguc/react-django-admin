@@ -9,13 +9,13 @@
     <script type="text/javascript" src="js/backbone.min-1.1.2.js"></script>
     <script type="text/javascript" src="js/backbone.localStorage-1.1.0.js"></script>
     <script type="text/javascript" src="js/react.min-0.14.0.js"></script>
-    <script type="text/javascript" src="js/require-2.1.15.js"></script>
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/bootstrap.min.js"></script>
 
 	<link rel="stylesheet" href="css/theme.css">
 
+	<script type="text/javascript" src="build/app.js"></script>
 	<script type="text/javascript" src="build/views.js"></script>
 
 </head>
@@ -29,7 +29,7 @@
     </div>
 
 	<script>
-		requirejs(["js/config", "js/app"], function($, canvas, sub) {
+		$(document).ready(function() {
 			Backbone.history.start();
 		});
 	</script>

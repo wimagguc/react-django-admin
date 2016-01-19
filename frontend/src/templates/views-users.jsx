@@ -1,4 +1,7 @@
-var UserItem = React.createClass({
+var RDA = RDA || {};
+RDA.Views = RDA.Views || {};
+
+RDA.Views.UserItem = React.createClass({
 	deleteUser: function(userid, e) {
 		e.preventDefault();
 
@@ -62,11 +65,11 @@ var UserItem = React.createClass({
 	}
 });
 
-var UserList = React.createClass({
+RDA.Views.UserList = React.createClass({
 	render: function() {
 		var userNodes = this.props.data.map(function (p) {
 			return (
-                <UserItem data={p}/>
+                <RDA.Views.UserItem data={p}/>
 	  		);
 		});
 		return (
@@ -82,7 +85,7 @@ var UserList = React.createClass({
 	}
 });
 
-var UserDashboard = React.createClass({displayName: "UserDashboard",
+RDA.Views.UserDashboard = React.createClass({displayName: "UserDashboard",
 	getInitialState: function() {
 		return {
 			data: [],
@@ -118,17 +121,17 @@ var UserDashboard = React.createClass({displayName: "UserDashboard",
 		}
 		return (
             <div>
-				<AlertView data={this.state.alert}/>
-				<NavigationTop/>
-				<UserList data={this.state.data}/>
-				<AddUserModal/>
+				<RDA.Views.AlertView data={this.state.alert}/>
+				<RDA.Views.NavigationTop/>
+				<RDA.Views.UserList data={this.state.data}/>
+				<RDA.Views.AddUserModal/>
 				<span dangerouslySetInnerHTML={{__html: spinnerString}}/>
 			</div>
 		);
 	}
 });
 
-var AddUserModal = React.createClass({
+RDA.Views.AddUserModal = React.createClass({
 	getInitialState: function() {
 		return {
 			data: {},
@@ -180,14 +183,14 @@ var AddUserModal = React.createClass({
 	},
 	render: function() {
 		return (
-			<ModalTrigger
+			<RDA.Views.ModalTrigger
 				htmlID={"addUserModal"}
 				trigger={<a className="btn btn-danger">New user</a>}
 				content={
 					<form className="form-horizontal" onSubmit={this.handleFormSubmit}>
 						<div className="modal-header"><h3>New user</h3></div>
 						<div className="modal-body col-sm-12">
-							<AlertView data={this.state.alert}/>
+							<RDA.Views.AlertView data={this.state.alert}/>
 							<div className="form-group">
 								<label for="username" className="col-sm-2 control-label">Username</label>
 								<div className="col-sm-10">
@@ -212,9 +215,9 @@ var AddUserModal = React.createClass({
 	}
 });
 
-function renderUsersView() {
+RDA.Views.renderUsersView = function() {
 	React.render(
-        <UserDashboard/>,
+        <RDA.Views.UserDashboard/>,
 		document.getElementById('app')
 	);
 }

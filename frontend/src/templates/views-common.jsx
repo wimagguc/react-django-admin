@@ -1,4 +1,7 @@
-var NavigationTop = React.createClass({
+var RDA = RDA || {};
+RDA.Views = RDA.Views || {};
+
+RDA.Views.NavigationTop = React.createClass({
 	handleLogout: function(e) {
 		e.preventDefault();
 		app.user.save({access_token:null});
@@ -25,7 +28,7 @@ var NavigationTop = React.createClass({
 	}
 });
 
-var AlertView = React.createClass({
+RDA.Views.AlertView = React.createClass({
 	render: function() {
 		var classString = 'alertView alert alert-dismissable';
 		if (this.props.data.state) {
@@ -45,7 +48,7 @@ var AlertView = React.createClass({
 	}
 });
 
-var ModalTrigger = React.createClass({
+RDA.Views.ModalTrigger = React.createClass({
 	handleClick: function(e) {
 		e.preventDefault();
 		$(this.refs.payload.getDOMNode()).modal();
@@ -54,7 +57,7 @@ var ModalTrigger = React.createClass({
 		return (
 			<div onClick={this.handleClick}>
 				{this.props.trigger}
-				<Modal ref="payload"
+				<RDA.Views.Modal ref="payload"
 					content={this.props.content}
 					htmlID={this.props.htmlID}
 				/>
@@ -63,7 +66,7 @@ var ModalTrigger = React.createClass({
 	}
 });
 
-var Modal = React.createClass({
+RDA.Views.Modal = React.createClass({
 	componentDidMount: function() {
 		$(this.getDOMNode()).modal({
 			background: true,

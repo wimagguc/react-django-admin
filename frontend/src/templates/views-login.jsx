@@ -1,4 +1,7 @@
-var LoginView = React.createClass({
+var RDA = RDA || {};
+RDA.Views = RDA.Views || {};
+
+RDA.Views.LoginView = React.createClass({
 	getInitialState: function() {
 		return { alert: {state: null, message: null} };
 	},
@@ -8,14 +11,14 @@ var LoginView = React.createClass({
   	render: function() {
 		return (
 			<div className="loginView" id="form_signin">
-				<LoginForm onFormSubmit={this.onFormSubmit}/>
-				<AlertView data={this.state.alert}/>
+				<RDA.Views.LoginForm onFormSubmit={this.onFormSubmit}/>
+				<RDA.Views.AlertView data={this.state.alert}/>
 			</div>
 		);
 	}
 });
 
-var LoginForm = React.createClass({
+RDA.Views.LoginForm = React.createClass({
     getInitialState: function() {
         return {username: null, password: null, ajaxRunning: 0};
     },
@@ -80,9 +83,9 @@ var LoginForm = React.createClass({
 	}
 });
 
-function renderLoginView() {
+RDA.Views.renderLoginView = function() {
 	React.render(
-		<LoginView/>,
+		<RDA.Views.LoginView/>,
 		document.getElementById('app')
 	);
 }
