@@ -8,19 +8,41 @@ RDA.Views.NavigationTop = React.createClass({
 		app.navigate("/", {trigger: true});
 	},
 	render: function() {
+		var companyName = app.user && app.user.attributes.data && app.user.attributes.data.user ? app.user.attributes.data.user.username : "User";
+		var isSuperUser = app.user && app.user.attributes.data && app.user.attributes.data.user ? app.user.attributes.data.user.is_superuser : false;
+
 		var links = [
 			{ hash: "#users", text:"Users", className: ""}
 		];
+
 		for (var i=0; i<links.length; i++) {
 			if ($(location).attr('hash').indexOf(links[i].hash) > -1) {
 				links[i].className = "active";
 			}
 		}
+
+		var profileClassName = "pull-right dropdown";
+		if ($(location).attr('hash').indexOf("settings") > -1 ||
+			$(location).attr('hash').indexOf("password") > -1 )
+		{
+			profileClassName += " active";
+		}
+
 		return (
 			<div className="row">
 				<ul className="nav nav-tabs">
 					<li role="presentation" className={links[0].className}><a href={links[0].hash}>{links[0].text}</a></li>
-					<li role="presentation"><a href="#" onClick={this.handleLogout}>Logout</a></li>
+						<li role="presentation" className={profileClassName}>
+						<a className="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+							{companyName} <span className="caret"></span>
+						</a>
+						<ul className="dropdown-menu" aria-labelledby="dropdownMenu1">
+							<li><a href="#settings">Settings</a></li>
+							<li><a href="#password">Change Password</a></li>
+							<li className="divider"></li>
+							<li><a href="#" onClick={this.handleLogout}>Logout</a></li>
+						</ul>
+					</li>
 				</ul>
 				<br/>
 			</div>
@@ -55,13 +77,13 @@ RDA.Views.ModalTrigger = React.createClass({
 	},
 	render: function() {
 		return (
-			<div onClick={this.handleClick}>
-				{this.props.trigger}
+			<span onClick={this.handleClick}>
+				<span dangerouslySetInnerHTML={{__html: this.props.trigger}} />
 				<RDA.Views.Modal ref="payload"
 					content={this.props.content}
 					htmlID={this.props.htmlID}
 				/>
-			</div>
+			</span>
 		);
 	}
 });

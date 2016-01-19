@@ -50,6 +50,7 @@ RDA.Views.UserItem = React.createClass({
 		} else if (this.props.data.first_name) {
 			name = this.props.data.first_name;
 		}
+		var userSettingsURL = "#users/" + this.props.data.id;
 		return (
             <tr>
 				<td>
@@ -58,6 +59,8 @@ RDA.Views.UserItem = React.createClass({
 				<td>
 					<div className="pull-right">
 						<a href='#' onClick={this.deleteUser.bind(this, this.props.data.id)} className="btn btn-sm btn-danger">Delete</a>
+						&nbsp;
+						<a href={userSettingsURL} className="btn btn-sm btn-info">Edit</a>
 					</div>
 				</td>
 			</tr>
@@ -74,9 +77,6 @@ RDA.Views.UserList = React.createClass({
 		});
 		return (
 			<table className="table table-striped">
-				<thead>
-					<tr><td>Users</td></tr>
-				</thead>
 				<tbody>
 					{userNodes}
 				</tbody>
@@ -123,6 +123,8 @@ RDA.Views.UserDashboard = React.createClass({displayName: "UserDashboard",
             <div>
 				<RDA.Views.AlertView data={this.state.alert}/>
 				<RDA.Views.NavigationTop/>
+				<h3>Users</h3>
+				<br/>
 				<RDA.Views.UserList data={this.state.data}/>
 				<RDA.Views.AddUserModal/>
 				<span dangerouslySetInnerHTML={{__html: spinnerString}}/>
@@ -185,7 +187,7 @@ RDA.Views.AddUserModal = React.createClass({
 		return (
 			<RDA.Views.ModalTrigger
 				htmlID={"addUserModal"}
-				trigger={<a className="btn btn-danger">New user</a>}
+				trigger={'<a class="btn btn-danger">New user</a>'}
 				content={
 					<form className="form-horizontal" onSubmit={this.handleFormSubmit}>
 						<div className="modal-header"><h3>New user</h3></div>
