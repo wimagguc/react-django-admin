@@ -4,9 +4,10 @@ RDA.Views = RDA.Views || {};
 RDA.Views.HelloView = React.createClass({
   	render: function() {
 		return (
-			<div>
-                Hello
-            </div>
+            <div>
+				<RDA.Views.NavigationTop/>
+				<h3>Hello</h3>
+			</div>
 		);
 	}
 });

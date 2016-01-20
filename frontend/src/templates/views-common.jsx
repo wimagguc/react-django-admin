@@ -1,6 +1,14 @@
 var RDA = RDA || {};
 RDA.Views = RDA.Views || {};
 
+RDA.Views.NavigationTopTabItem = React.createClass({
+	render: function() {
+		return (
+			<li role="presentation" className={this.props.data.className}><a href={this.props.data.hash}>{this.props.data.text}</a></li>
+		);
+	}
+});
+
 RDA.Views.NavigationTop = React.createClass({
 	handleLogout: function(e) {
 		e.preventDefault();
@@ -12,14 +20,22 @@ RDA.Views.NavigationTop = React.createClass({
 		var isSuperUser = app.user && app.user.attributes.data && app.user.attributes.data.user ? app.user.attributes.data.user.is_superuser : false;
 
 		var links = [
-			{ hash: "#users", text:"Users", className: ""}
+			{ hash: "#hello", text:"Hello", className: ""},
 		];
-
+		if (isSuperUser) {
+			links.push({ hash: "#users", text:"Users", className: ""});
+		}
 		for (var i=0; i<links.length; i++) {
 			if ($(location).attr('hash').indexOf(links[i].hash) > -1) {
 				links[i].className = "active";
 			}
 		}
+
+		var navigationTabNodes = links.map(function (p) {
+			return (
+                <RDA.Views.NavigationTopTabItem key={p.id} data={p}/>
+	  		);
+		});
 
 		var profileClassName = "pull-right dropdown";
 		if ($(location).attr('hash').indexOf("settings") > -1 ||
@@ -31,8 +47,8 @@ RDA.Views.NavigationTop = React.createClass({
 		return (
 			<div className="row">
 				<ul className="nav nav-tabs">
-					<li role="presentation" className={links[0].className}><a href={links[0].hash}>{links[0].text}</a></li>
-						<li role="presentation" className={profileClassName}>
+					{navigationTabNodes}
+					<li role="presentation" className={profileClassName}>
 						<a className="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
 							{companyName} <span className="caret"></span>
 						</a>

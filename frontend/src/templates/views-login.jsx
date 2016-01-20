@@ -45,12 +45,20 @@ RDA.Views.LoginForm = React.createClass({
 				_this.setState({ajaxRunning:0});
 				data = JSON.parse(data);
 
-				if (('localStorage' in window) && window['localStorage'] !== null) {
-					localStorage["RDA_APP.user.at"] = data.access_token;
-				}
-
 				app.user.save({access_token:data.access_token});
-				app.navigate("/users", {trigger: true});
+
+				app.API.getUserById({
+					userid: "",
+					success: function(userresponse) {
+						console.log(userresponse);
+						app.user.save({data: userresponse});
+						app.navigate("/hello", {trigger: true});
+					},
+					error: function(userresponse) {
+						_this.setState({ajaxRunning:0});
+						_this.props.onFormSubmit("danger", "Can't log in.");
+					}
+				});
 			},
 			data: {
 				"grant_type" : "password",

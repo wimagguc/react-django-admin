@@ -60,6 +60,17 @@ REST_FRAMEWORK = {
     )
 }
 
+DEFAULT_FROM_EMAIL = 'no-reply@yourserver.com'
+SERVER_EMAIL = 'no-reply@yourserver.com'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+EMAIL_HOST = 'smtp.yourserver.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'no-reply@yourserver.com'
+EMAIL_HOST_PASSWORD = 'the_password_you_have'
+EMAIL_USE_TLS = True
+
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'corsheaders.middleware.CorsMiddleware',
