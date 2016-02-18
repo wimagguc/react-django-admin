@@ -4,13 +4,23 @@ Administration interface in React JS, and a simple Django Rest Framework (with O
 
 This is not meant to be a replacement of Django's admin. What this project is actually good for:
 
-* You can provide a separate "administration" area for the website's users
+* You can provide a separate "administration" area for users
 * Web login for any OAuth2-based API
+
+## Screenshots
+
+![image](docs/screenshot_1.png)
+
+![image](docs/screenshot_2.png)
+
+![image](docs/screenshot_3.png)
+
+![image](docs/screenshot_4.png)
 
 ## TODO
 
-    * Better README :)
-    * React views are now using global variables, whoah!
+  * Forgotten password
+  * Many, many bugfixes are coming up
 
 ## Frontend
 
@@ -33,9 +43,10 @@ This is not meant to be a replacement of Django's admin. What this project is ac
     ```js
     var RDAAppConfig = {};
     RDAAppConfig.Config = {
-    	API_URI : "http://localhost:5000",
-    	CLIENT_ID : "<YOUR_CLIENT_ID>",
-    	CLIENT_SECRET : "<YOUR_CLIENT_SECRET>"
+      API_URI : "http://localhost:5000",
+      CLIENT_ID : "<YOUR_CLIENT_ID>",
+      CLIENT_SECRET : "<YOUR_CLIENT_SECRET>",
+      STORAGE_ID : "RDA_LOCALSTORAGE"
     };
     ```
 
