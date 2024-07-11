@@ -1,4 +1,4 @@
-Django>=1.8.6
+Django>=4.2.14
 django-cors-headers>=0.13
 djangorestframework>=3.3.1
 django-oauth-toolkit>=0.9.0
@@ -7,3 +7,4 @@ djangorestframework-oauth>=1.0.1
 gunicorn>=0.17.4
 html2text>=2016.1.8
 pytz>=2012f
+zipp>=3.19.1 # not directly required, pinned by Snyk to avoid a vulnerability
