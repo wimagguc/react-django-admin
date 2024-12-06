@@ -1,4 +1,4 @@
-Django>=1.8.6
+Django>=4.2.17
 django-cors-headers>=0.13
 djangorestframework>=3.3.1
 django-oauth-toolkit>=0.9.0
